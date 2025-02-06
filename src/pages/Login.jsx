@@ -4,6 +4,7 @@ import { auth } from '../firebase'
 import { useNavigate } from 'react-router-dom'
 import React from 'react'
 import Input from '../components/Input'
+import Navbar from '../components/Navbar'
 
 const Login = () => {
    const [email, setEmail] = useState('');
@@ -26,8 +27,9 @@ const Login = () => {
 
    return (
     <div className='flex items-center justify-center h-screen w-full'>
-        <div className='bg-blue-500 py-14 px-12 rounded shadow-md'>
-            <h1 className='text-5xl font-bold '>Login</h1>
+        <Navbar />
+        <div className='bg-blue-500 py-14 px-12 rounded-2xl shadow-md'>
+            <h1 className='text-5xl font-bold'>Login</h1>
             <form onSubmit={handleLogin}>
             <div className='flex flex-col gap-4 mt-4'>
                 <Input 
@@ -46,7 +48,7 @@ const Login = () => {
             <button 
                 type='submit' 
                 className='bg-amber-100 px-3 py-2 rounded text-black mt-4'>
-                    Login
+                Login
             </button>
             </form>
         </div>

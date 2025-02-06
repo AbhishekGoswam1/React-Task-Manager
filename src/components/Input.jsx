@@ -8,7 +8,7 @@ const Input = ({type, placeholder, value, onChange}) => {
         placeholder={placeholder}
         value={value}
         onChange={onChange}
-        className='py-2 px-3 bg-gray-200 text-black text-xl rounded'
+        className='py-2 px-3 bg-white text-black w-56 text-xl rounded outline-none'
     />
     </>
   )
