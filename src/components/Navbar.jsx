@@ -10,36 +10,36 @@ const Navbar = () => {
   return (
     <>
     {/* Header */}
-    <header className="fixed top-0 w-full bg-opacity-20 backdrop-blur-lg shadow-lg p-4 flex justify-between items-center">
-        <h1 className="text-2xl font-bold">Task Manager</h1>
+    <header className="fixed top-0 w-full bg-opacity-20 backdrop-blur-lg shadow-lg px-6 py-4 flex justify-between items-center text-gray-800">
+        <h1 className="text-2xl font-bold">Prio</h1>
         
         {/* Desktop Nav */}
-        <nav className="hidden md:flex text-white gap-8">
-          <Link to="/#" className="hover:text-gray-200 text-lg font-normal">Home</Link>
-          <Link to="/login" className="hover:text-gray-200 text-lg font-normal">Login</Link>
-          <Link to="/Signup" className="hover:text-gray-200 text-lg font-normal">Signup</Link>
-          <Link to="/Dashboard" className="hover:text-gray-200 text-lg font-normal">Dashboard</Link>
-          <Link to="/About" className="hover:text-gray-200 text-lg font-normal">About</Link>
+        <nav className="hidden md:flex text-gray gap-8">
+          <Link to="/#" className="text-lg font-medium">Home</Link>
+          <Link to="/login" className="text-lg font-medium">Login</Link>
+          <Link to="/Signup" className="text-lg font-medium">Signup</Link>
+          <Link to="/Dashboard" className="text-lg font-medium">Dashboard</Link>
+          <Link to="/About" className="text-lg font-medium">About</Link>
         </nav>
         
         {/* Mobile Menu */}
-        <button className="md:hidden" onClick={() => setMenuOpen(!menuOpen)}>
-          {menuOpen ? <X size={24} /> : <Menu size={24} />}
+        <button className="md:hidden cursor-pointer" onClick={() => setMenuOpen(!menuOpen)}>
+          {menuOpen ? <X size={25} /> : <Menu size={25} />}
         </button>
       </header>
 
       {/* Mobile Nav */}
       {menuOpen && (
         <motion.nav 
-          initial={{ opacity: 0, x: -10 }}
-          animate={{ opacity: 1, x: 0 }}
-          className="absolute top-16 right-0 w-40 bg-indigo-700 p-5 flex items-center flex-col gap-4 md:hidden"
+          initial={{ opacity: 0, y: -10 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="absolute top-14 fixed right-0 w-40 bg-[#f3f4f67b] text-gray-800 backdrop-blur-md shadow-lg py-8 px-6 rounded-xl flex items-start flex-col gap-4 md:hidden"
         >
-          <Link to="/#" className="hover:text-gray-200 text-xl font-normal">Home</Link>
-          <Link to="/login" className="hover:text-gray-200 text-xl font-normal">Login</Link>
-          <Link to="/Signup" className="hover:text-gray-200 text-xl font-normal">Signup</Link>
-          <Link to="/Dashboard" className="hover:text-gray-200 text-xl font-normal">Dashboard</Link>
-          <Link to="/About" className="hover:text-gray-200 text-xl font-normal">About</Link>
+          <Link to="/#" className="text-xl font-medium">Home</Link>
+          <Link to="/login" className="text-xl font-medium">Login</Link>
+          <Link to="/Signup" className="text-xl font-medium">Signup</Link>
+          <Link to="/Dashboard" className="text-xl font-medium">Dashboard</Link>
+          <Link to="/About" className="text-xl font-medium">About</Link>
         </motion.nav>
       )}
     </>
