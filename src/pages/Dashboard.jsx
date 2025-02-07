@@ -8,6 +8,7 @@ import Logout from "../components/Logout";
 import ChangePassword from "../components/ChangePassword";
 import AddTask from "../components/AddTask";
 import TaskList from "../components/TaskList";
+import Footer from "../components/Footer";
 
 const Dashboard = () => {
   const [tasks, setTasks] = useState([]);
@@ -28,9 +29,10 @@ const Dashboard = () => {
   }, [user]);
 
   return (
-    <div className="min-h-screen bg-gray-100 text-gray-800 flex flex-col items-center p-5">
+    <div flex flex-col min-h-screen>
+      <div className="flex-grow min-h-screen bg-gray-900 text-gray-200 flex flex-col items-center p-5">
       <Navbar />
-      <div className="w-full max-w-3xl bg-white shadow-md rounded-xl p-6 mt-15">
+      <div className="w-full max-w-3xl bg-gray-800 shadow-md rounded-xl p-6 mt-15">
         <h1 className="text-3xl font-bold text-center text-blue-500 mb-4">Dashboard</h1>
 
         {/* Profile Section */}
@@ -39,7 +41,7 @@ const Dashboard = () => {
           <span className="text-lg font-semibold">Profile</span>
         </div>
         {profileOpen && (
-          <div className="bg-gray-800 p-4 rounded-lg text-white">
+          <div className="bg-gray-900 p-4 rounded-lg text-white">
             <p className="mb-2"><strong>Email:</strong> {user?.email}</p>
             <ChangePassword />
             <Logout setTasks={setTasks} />
@@ -50,6 +52,8 @@ const Dashboard = () => {
         <AddTask setTasks={setTasks} tasks={tasks} user={user} />
         <TaskList tasks={tasks} setTasks={setTasks} />
       </div>
+      </div>
+      <Footer />
     </div>
   );
 };

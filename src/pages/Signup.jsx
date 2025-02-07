@@ -11,6 +11,7 @@ import Input from "../components/Input";
 import Navbar from "../components/Navbar";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
+import Footer from "../components/Footer";
 import { FaGoogle } from "react-icons/fa"; // Importing Google icon
 
 const Signup = () => {
@@ -61,64 +62,67 @@ const Signup = () => {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center h-screen bg-gray-100">
-      <Navbar />
-      <motion.div
-        initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5 }}
-        className="bg-white shadow-2xl rounded-xl p-8 w-full max-w-md text-center"
-      >
-        <h1 className="text-4xl font-bold text-gray-800 mb-6">Signup</h1>
-        {error && <p className="text-red-500 text-sm mb-2">{error}</p>}
+    <div className="flex flex-col min-h-screen">
+      <div className="flex-grow flex flex-col items-center justify-center h-screen bg-gray-900">
+        <Navbar />
+        <motion.div
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          className="bg-gray-800 shadow-2xl rounded-xl p-8 w-full max-w-md text-center"
+        >
+          <h1 className="text-4xl font-bold text-gray-200 mb-6">Signup</h1>
+          {error && <p className="text-red-500 text-sm mb-2">{error}</p>}
 
-        <form onSubmit={handleSignup} className="space-y-4">
-          <Input
-            type="text"
-            placeholder="Enter Username"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-          />
-          <Input
-            type="email"
-            placeholder="Enter Email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-          <Input
-            type="password"
-            placeholder="Enter Password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
+          <form onSubmit={handleSignup} className="space-y-4">
+            <Input
+              type="text"
+              placeholder="Enter Username"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+            />
+            <Input
+              type="email"
+              placeholder="Enter Email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+            <Input
+              type="password"
+              placeholder="Enter Password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+            <button
+              type="submit"
+              className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-all w-full"
+              disabled={loading}
+            >
+              {loading ? "Signing up..." : "Signup"}
+            </button>
+          </form>
+
+          <p className="text-gray-500 my-3">or</p>
+
+          {/* Google Signup Button with Icon */}
           <button
-            type="submit"
-            className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-all w-full"
+            onClick={handleGoogleSignup}
+            className="flex items-center justify-center gap-2 bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600 transition-all w-full"
             disabled={loading}
           >
-            {loading ? "Signing up..." : "Signup"}
+            <FaGoogle className="text-xl" />{" "}
+            {loading ? "Signing up..." : "Signup with Google"}
           </button>
-        </form>
 
-        <p className="text-gray-500 my-3">or</p>
-
-        {/* Google Signup Button with Icon */}
-        <button
-          onClick={handleGoogleSignup}
-          className="flex items-center justify-center gap-2 bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600 transition-all w-full"
-          disabled={loading}
-        >
-          <FaGoogle className="text-xl" />{" "}
-          {loading ? "Signing up..." : "Signup with Google"}
-        </button>
-
-        <div className="mt-4 text-gray-600">
-          Already have an account?
-          <Link to="/login" className="text-blue-600 ml-1 hover:underline">
-            Login
-          </Link>
-        </div>
-      </motion.div>
+          <div className="mt-4 text-gray-400">
+            Already have an account?
+            <Link to="/login" className="ml-1">
+              Login
+            </Link>
+          </div>
+        </motion.div>
+      </div>
+      <Footer />
     </div>
   );
 };

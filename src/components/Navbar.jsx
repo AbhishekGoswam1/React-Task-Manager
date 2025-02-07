@@ -10,7 +10,7 @@ const Navbar = () => {
   return (
     <>
     {/* Header */}
-    <header className="fixed top-0 w-full bg-opacity-20 backdrop-blur-lg shadow-lg px-6 py-4 flex justify-between items-center text-gray-800">
+    <header className="z-10 fixed top-0 w-full bg-opacity-20 backdrop-blur-lg shadow-lg px-6 py-4 flex justify-between items-center text-gray-300">
         <h1 className="text-2xl font-bold">Prio</h1>
         
         {/* Desktop Nav */}
@@ -33,7 +33,7 @@ const Navbar = () => {
         <motion.nav 
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
-          className="absolute top-14 fixed right-0 w-40 bg-[#f3f4f67b] text-gray-800 backdrop-blur-md shadow-lg py-8 px-6 rounded-xl flex items-start flex-col gap-4 md:hidden"
+          className="z-10 top-14 fixed right-0 w-40 bg-[#101828ac] text-gray-300 backdrop-blur-lg shadow-lg py-8 px-6 rounded-xl flex items-start flex-col gap-4 md:hidden"
         >
           <Link to="/#" className="text-xl font-medium">Home</Link>
           <Link to="/login" className="text-xl font-medium">Login</Link>

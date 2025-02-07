@@ -12,6 +12,7 @@ import Navbar from "../components/Navbar";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { FaGoogle } from "react-icons/fa";
+import Footer from "../components/Footer";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -57,15 +58,16 @@ const Login = () => {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center h-screen bg-gray-100">
+    <div className="flex flex-col min-h-screen">
+      <div className="flex-grow min-h-screen flex flex-col items-center justify-center bg-gray-900">
       <Navbar />
       <motion.div
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
-        className="bg-white shadow-2xl rounded-xl p-8 w-full max-w-md text-center"
+        className="bg-gray-800 shadow-2xl rounded-xl p-8 w-full max-w-md text-center"
       >
-        <h1 className="text-4xl font-bold text-gray-800 mb-6">Login</h1>
+        <h1 className="text-4xl font-bold text-gray-200 mb-6">Login</h1>
         {error && <p className="text-red-500 text-sm mb-2">{error}</p>}
         {googleError && (
           <p className="text-red-500 text-sm mb-2">{googleError}</p>
@@ -124,6 +126,8 @@ const Login = () => {
           </Link>
         </div>
       </motion.div>
+      </div>
+      <Footer />
     </div>
   );
 };

@@ -17,7 +17,7 @@ const TaskList = ({ tasks, setTasks }) => {
   return (
     <ul className="mt-4 space-y-2">
       {tasks.map((task) => (
-        <li key={task.id} className="bg-gray-800 p-4 rounded-lg flex items-center justify-between text-white">
+        <li key={task.id} className="bg-gray-900 p-4 rounded-lg flex items-center justify-between text-white">
           <input
             type="checkbox"
             checked={task.completed}
