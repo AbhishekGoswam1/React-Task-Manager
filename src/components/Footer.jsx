@@ -1,4 +1,4 @@
-import { FaGithub, FaLinkedin, FaTwitter } from "react-icons/fa";
+import { FaGithub, FaInstagram, FaLinkedin } from "react-icons/fa";
 import { motion } from "framer-motion";
 
 const MadeBy = () => {
@@ -13,29 +13,29 @@ const MadeBy = () => {
           target="_blank"
           rel="noopener noreferrer"
           whileHover={{ scale: 1.1, rotate: 5 }}
-          className="text-gray-700 hover:text-black transition duration-300 text-3xl"
+          className="transition duration-300 text-3xl"
         >
           <FaGithub />
         </motion.a>
 
         <motion.a
-          href="https://linkedin.com/in/yourprofile"
+          href="https://www.linkedin.com/in/abhishek-goswamii/"
           target="_blank"
           rel="noopener noreferrer"
           whileHover={{ scale: 1.1, rotate: -5 }}
-          className="text-blue-700 hover:text-blue-900 transition duration-300 text-3xl"
+          className="transition duration-300 text-3xl"
         >
           <FaLinkedin />
         </motion.a>
 
         <motion.a
-          href="https://twitter.com/yourprofile"
+          href="https://www.instagram.com/abhi_shek.in"
           target="_blank"
           rel="noopener noreferrer"
           whileHover={{ scale: 1.1, rotate: 5 }}
-          className="text-blue-500 hover:text-blue-700 transition duration-300 text-3xl"
+          className="transition duration-300 text-3xl"
         >
-          <FaTwitter />
+          <FaInstagram />
         </motion.a>
       </div>
     </div>
