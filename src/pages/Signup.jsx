@@ -109,7 +109,7 @@ const Signup = () => {
           {/* Google Signup Button with Icon */}
           <button
             onClick={handleGoogleSignup}
-            className="flex items-center justify-center gap-2 bg-gray-700 text-white px-4 py-2 rounded-lg hover:bg-red-600 transition-all w-full"
+            className="flex items-center justify-center gap-2 bg-gray-700 text-white px-4 py-2 rounded-lg hover:bg-gray-800 transition-all w-full"
             disabled={loadingType === "google"}
           >
             <FaGoogle className="text-xl" />{" "}
