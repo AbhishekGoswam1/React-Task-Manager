@@ -17,7 +17,8 @@ import Footer from "../components/Footer";
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [loading, setLoading] = useState(false);
+  const [loadingLogin, setLoadingLogin] = useState(false);
+  const [loadingGoogle, setLoadingGoogle] = useState(false);
   const [error, setError] = useState("");
   const [googleError, setGoogleError] = useState("");
   const navigate = useNavigate();
@@ -25,7 +26,7 @@ const Login = () => {
   // Email & Password Login
   const handleLogin = async (e) => {
     e.preventDefault();
-    setLoading(true);
+    setLoadingLogin(true);
     setError("");
     try {
       await signInWithEmailAndPassword(auth, email, password);
@@ -33,12 +34,12 @@ const Login = () => {
     } catch (error) {
       setError("Invalid email or password. Please try again.");
     }
-    setLoading(false);
+    setLoadingLogin(false);
   };
 
   // Google Login
   const handleGoogleLogin = async () => {
-    setLoading(true);
+    setLoadingGoogle(true);
     setGoogleError("");
     try {
       const provider = new GoogleAuthProvider();
@@ -54,7 +55,7 @@ const Login = () => {
         setGoogleError("Error logging in with Google. Try again.");
       }
     }
-    setLoading(false);
+    setLoadingGoogle(false);
   };
 
   return (
@@ -89,9 +90,9 @@ const Login = () => {
           <button
             type="submit"
             className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-all w-full"
-            disabled={loading}
+            disabled={loadingLogin}
           >
-            {loading ? "Logging in..." : "Login"}
+            {loadingLogin ? "Logging in..." : "Login"}
           </button>
         </form>
 
@@ -100,31 +101,18 @@ const Login = () => {
         {/* Google Login Button */}
         <button
           onClick={handleGoogleLogin}
-          className="flex items-center justify-center gap-2 bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600 transition-all w-full"
-          disabled={loading}
+          className="flex items-center justify-center gap-2 bg-gray-700 text-white px-4 py-2 rounded-lg hover:bg-gray-800 transition-all w-full"
+          disabled={loadingGoogle}
         >
-          <FaGoogle className="text-xl" />{" "}
-          {loading ? "Logging in..." : "Login with Google"}
+          <FaGoogle className="text-lg" /> {loadingGoogle ? "Logging in..." : "Login with Google"}
         </button>
 
-        <div className="mt-4 flex justify-between text-white">
-          <Link to="/signup">
-            <button
-              type="submit"
-              className="bg-blue-600 px-4 py-2 rounded-lg hover:bg-blue-700 transition-all w-full"
-            >
+        <div className="mt-4 text-gray-400">
+            Do not have an account?
+            <Link to="/signup" className="ml-1">
               Signup
-            </button>
-          </Link>
-          <Link to="/forgot-password">
-            <button
-              type="submit"
-              className="bg-blue-600 px-4 py-2 rounded-lg hover:bg-blue-700 transition-all w-full"
-            >
-              Forgot Password
-            </button>
-          </Link>
-        </div>
+            </Link>
+          </div>
       </motion.div>
       </div>
       <Footer />

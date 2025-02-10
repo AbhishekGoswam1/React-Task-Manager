@@ -18,14 +18,14 @@ const Signup = () => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [loading, setLoading] = useState(false);
+  const [loadingType, setLoadingType] = useState(null); // 'email' or 'google'
   const [error, setError] = useState("");
   const navigate = useNavigate();
 
   // Handle Email & Password Signup
   const handleSignup = async (e) => {
     e.preventDefault();
-    setLoading(true);
+    setLoadingType("email");
     setError("");
 
     try {
@@ -44,21 +44,23 @@ const Signup = () => {
       }
     }
 
-    setLoading(false);
+    setLoadingType(null);
   };
 
   // Handle Google Signup
   const handleGoogleSignup = async () => {
-    setLoading(true);
+    setLoadingType("google");
     setError("");
+
     try {
       const provider = new GoogleAuthProvider();
-      const result = await signInWithPopup(auth, provider);
+      await signInWithPopup(auth, provider);
       navigate("/dashboard");
     } catch (error) {
       setError("Error signing up with Google.");
     }
-    setLoading(false);
+
+    setLoadingType(null);
   };
 
   return (
@@ -96,9 +98,9 @@ const Signup = () => {
             <button
               type="submit"
               className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-all w-full"
-              disabled={loading}
+              disabled={loadingType === "email"}
             >
-              {loading ? "Signing up..." : "Signup"}
+              {loadingType === "email" ? "Signing up..." : "Signup"}
             </button>
           </form>
 
@@ -107,16 +109,16 @@ const Signup = () => {
           {/* Google Signup Button with Icon */}
           <button
             onClick={handleGoogleSignup}
-            className="flex items-center justify-center gap-2 bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600 transition-all w-full"
-            disabled={loading}
+            className="flex items-center justify-center gap-2 bg-gray-700 text-white px-4 py-2 rounded-lg hover:bg-red-600 transition-all w-full"
+            disabled={loadingType === "google"}
           >
             <FaGoogle className="text-xl" />{" "}
-            {loading ? "Signing up..." : "Signup with Google"}
+            {loadingType === "google" ? "Signing up..." : "Signup with Google"}
           </button>
 
           <div className="mt-4 text-gray-400">
             Already have an account?
-            <Link to="/login" className="ml-1">
+            <Link to="/login" className="ml-1 text-blue-400 hover:underline">
               Login
             </Link>
           </div>

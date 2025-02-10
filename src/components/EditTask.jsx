@@ -15,7 +15,7 @@ const EditTask = ({ task, setTasks, tasks }) => {
   };
 
   return (
-    <div className="flex items-center gap-2">
+    <div className="flex items-center justify-between w-[100%] gap-2 px-2">
       {isEditing ? (
         <>
           <Input

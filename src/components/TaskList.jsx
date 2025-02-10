@@ -17,12 +17,12 @@ const TaskList = ({ tasks, setTasks }) => {
   return (
     <ul className="mt-4 space-y-2">
       {tasks.map((task) => (
-        <li key={task.id} className="bg-gray-900 p-4 rounded-lg flex items-center justify-between text-white">
+        <li key={task.id} className="bg-gray-700 p-4 rounded-lg flex items-center text-white">
           <input
             type="checkbox"
             checked={task.completed}
             onChange={() => toggleTaskCompletion(task.id, task.completed)}
-            className="mr-2 accent-blue-400"
+            className="mr-2 w-4 h-4 accent-blue-400"
           />
           <EditTask task={task} setTasks={setTasks} tasks={tasks} />
           <FaTrash onClick={() => deleteTask(task.id)} className="text-red-500 cursor-pointer text-lg" />
